@@ -8,7 +8,7 @@ var parser = require('body-parser');
 // Router
 var router = require('./routes.js');
 
-var app = express();
+var app = express(); //holy cow!
 module.exports.app = app;
 
 // Set what we are listening on.

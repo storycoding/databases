@@ -5,3 +5,14 @@ var mysql = require('mysql');
 // and to the database "chat".
 
 
+var connection = mysql.createConnection({ // mysql package database creation / access object
+	user: 'root',
+	password: '', //didn't set one up
+	database: 'chat'
+});
+
+connection.connect(); // connect the database to our project
+
+module.exports = connection;
+
+//how does this connection know how to located my schema?
