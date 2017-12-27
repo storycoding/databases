@@ -1,5 +1,4 @@
 var express = require('express');
-var db = require('./db');
 
 // Middleware
 var morgan = require('morgan');
@@ -19,7 +18,7 @@ app.use(morgan('dev'));
 app.use(parser.json());
 
 // Set up our routes
-app.use('/classes', router);
+app.use('/classes', router); // ENDPOINT!!
 
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
