@@ -3,7 +3,7 @@ var app = {
 
   //TODO: The current 'handleUsernameClick' function just toggles the class 'friend'
   //to all messages sent by the user
-  server: 'http://parse.CAMPUS.hackreactor.com/chatterbox/classes/messages',
+  server: '127.0.0.1:3000',
   username: 'anonymous',
   roomname: 'lobby',
   lastMessageId: 0,
@@ -58,9 +58,9 @@ var app = {
 
   fetch: function(animate) {
     $.ajax({
-      url: app.server,
+      url: 'http://' + app.server,
       type: 'GET',
-      data: { order: '-createdAt' },
+      //data: { order: '-createdAt' },
       contentType: 'application/json',
       success: function(data) {
         // Don't bother if we have nothing to work with
@@ -224,6 +224,7 @@ var app = {
     event.preventDefault();
   },
 
+/*
   startSpinner: function() {
     $('.spinner img').show();
     $('form input[type=submit]').attr('disabled', 'true');
@@ -234,3 +235,4 @@ var app = {
     $('form input[type=submit]').attr('disabled', null);
   }
 };
+*/

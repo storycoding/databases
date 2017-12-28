@@ -1,19 +1,20 @@
 var models = require('../models');
 
 module.exports = {
-  	messages: {
-        get: function (req, res) {
-     		 models.messages.get(function(err, results) {
-        	if (err) { throw err }
-        	res.json(results);
-      	});
- 	},
-    	post: function (req, res) {
-      		var params = [req.body.message, req.body.username, req.body.roomname];
-      		models.messages.post(params, function(err, results) {
-        	if (err) { throw err }
-        	res.sendStatus(201);
-     	});
+
+  messages: {
+    get: function (req, res) {
+      models.messages.get(function(err, results) {
+        if (err) { throw err }
+        res.json(results);
+      });
+    },
+    post: function (req, res) {
+      var params = [req.body.message, req.body.username, req.body.roomname];
+      models.messages.post(params, function(err, results) {
+        if (err) { throw err }
+        res.sendStatus(201);
+      });
     }
   },
 
@@ -24,7 +25,6 @@ module.exports = {
         res.json(results);
       });
     },
-
     post: function (req, res) {
       var params = [req.body.username];
       models.users.post(params, function(err, results) {
@@ -33,7 +33,5 @@ module.exports = {
       });
     }
   }
-};
+  };
 
-// i might be messing up the references by using different identifiers
-// .username in html requests /vs/ .name in sql

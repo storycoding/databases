@@ -2,78 +2,34 @@ CREATE DATABASE chat;
 
 USE chat;
 
-/*
 CREATE TABLE messages (
- id int NOT NULL AUTO_INCREMENT, -- sets a new id for each entry automatically
- author int NOT NULL, -- not null makes sure it can't accept a new entry without this field
- roomname varchar(12) NOT NULL,
- message text(256) NOT NULL,
- room int NOT NULL,
- primary key (id) -- sets primary key to be the id
+  /* Describe your table here.*/
+
+  id int NOT NULL AUTO_INCREMENT,
+  userid int NOT NULL,
+  text varchar(200)  NOT NULL,
+  roomname varchar(20),
+  PRIMARY KEY (ID)
 );
-*/
 
 /* Create other tables and define schemas for them here! */
 
-/*
+
 CREATE TABLE users (
- id int NOT NULL AUTO_INCREMENT,
- name varchar(12) NOT NULL,
- messages int(4),
- primary key (id)
+  id        int    NOT NULL AUTO_INCREMENT,
+  username  varchar(40)   NOT NULL,
+  PRIMARY KEY (ID)
 );
 
-CREATE TABLE rooms (
- id int NOT NULL AUTO_INCREMENT,
- name char(12) NOT NULL,
- messages int(4),
- primary key (id)
-);
-*/
-
-CREATE TABLE IF NOT EXISTS `messages` (
- `id` int NOT NULL AUTO_INCREMENT, -- sets a new id for each entry automatically
- `author` int NOT NULL, -- not null makes sure it can't accept a new entry without this field
- `roomname` varchar(12) NOT NULL,
- `text` text(256) NOT NULL,
- `room` int NOT NULL,
- primary key (`id`) -- sets primary key to be the id
-)  DEFAULT CHARSET=utf8;
-
-
-CREATE TABLE IF NOT EXISTS `users` (
- `id` int NOT NULL AUTO_INCREMENT, -- sets a new id for each entry automatically
- `name` varchar (12) NOT NULL, -- not null makes sure it can't accept a new entry without this field
- primary key (`id`) -- sets primary key to be the id
-)  DEFAULT CHARSET=utf8;
-
-
-/*
-CREATE TABLE IF NOT EXISTS `rooms` (
- `id` int NOT NULL AUTO_INCREMENT, -- sets a new id for each entry automatically
- `name` varchar (12) NOT NULL, -- not null makes sure it can't accept a new entry without this field
- primary key (`id`) -- sets primary key to be the id
-)  DEFAULT CHARSET=utf8;
-
+INSERT INTO `messages` (`userid`, `text`, `roomname`) VALUES
+  ('1', 'The earth is flat', 'lobby'),
+  ( '1', 'It sure is cold out here!', 'random');
   
-INSERT INTO `rooms` (`name`) VALUES
-  ('lobby');
-
-*/
-
-
-INSERT INTO `messages` (`author`, `roomname`, `message`, `room`) VALUES
-  ('1', 'lobby', 'The earth is flat', '1'),
-  ( '1', 'random', 'It sure is cold out here!', '2');
-  
-INSERT INTO `users` (`name`) VALUES
+INSERT INTO `users` (`username`) VALUES
   ('nuno');
 
 
--- insert into users values ('01','Nuno','0001');
--- insert into messages values ('0001', 'Nuno', 'yes-yes-yall!', '1');
--- insert into rooms values ('1','lobby','0001');
-
 /*  Execute this file from the command line by typing:
- *  mysql -u root < server/schema.sql
+ *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
+
